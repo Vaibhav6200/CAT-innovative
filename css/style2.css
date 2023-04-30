@@ -1,0 +1,161 @@
+body{
+    min-height:100vh;
+    background-position:center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+}
+.side-bar{
+    background:black;
+    backdrop-filter:blur(15px);
+    width:290px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    transition:0.8s ease;
+    transition-property:left;
+    overflow-y:auto;
+    left:-100%;
+
+
+}
+
+.side-bar .menu{
+    width:100%;
+    margin-top:80px;
+
+}
+.side-bar .menu .item{
+    position:relative;
+    cursor:pointer;
+}
+
+.side-bar .menu .item a{
+
+
+    color:white;
+    font-size:20px;
+    text-decoration:none;
+    display:block;
+    padding: 5px 30px;
+    line-height:60px;
+}
+
+.side-bar .menu .item a:hover{
+    background-color:rgba(255,255,255,0.2);
+    transition: 0.3s ease;
+}
+.side-bar .menu .item{
+    margin-right: 15px;
+
+}
+.side-bar .menu .item i{
+    margin-right:15px;
+
+}
+
+.side-bar .menu .item{
+    margin-right: 15px;
+
+}
+.side-bar .menu .item i{
+    margin-right:15px;
+
+}
+.side-bar .menu .item a .dropdown{
+    position:absolute;
+    right:0;
+    margin:20px;
+    transition:0.3s ease;
+
+}
+.side-bar .menu .item .sub-menu{
+    background:rgba(255,255,255,0.1);
+    display:none;
+}
+.side-bar .menu .item .sub-menu a{
+    padding-left:80px;
+
+
+}
+.rotate{
+    transform:rotate(90deg);
+}
+.close-btn{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    right:0;
+    margin:25px;
+    cursor:pointer;
+}
+.menu-btn{
+    position:absolute;
+    color:black;
+    font-size:20px;
+    margin:25px;
+    cursor:pointer;
+}
+.side-bar.active{
+    left:0;
+
+}
+#myDiv{
+    height:100px;
+    width:100px;
+    background-color:blue;
+}
+#myDiv.clicked{
+    background-color: red;
+}
+#vini{
+    height:100px;
+    width:100px;
+    background-color:blue;
+
+}
+#vini.clicked{
+    background-color: red;
+
+}
+
+
+
+
+
+
+  .content {
+    position: relative;
+    margin-left: 200px; /* Adjust for the width of the sidebar */
+    padding: 20px;
+  }
+
+  .positioned-div {
+    position: absolute;
+    top: 50px;
+    left: 220px; /* Adjust as needed */
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #000;
+    z-index: 2; /* Make sure it appears in front of the sidebar */
+  }
+
+  .flex-container{
+
+    display:flex;
+
+
+
+
+  }
+  .content{
+    width: calc(100% - 290px);
+    font-style: italic;
+    background-color: red;
+  }
+
+
+
+
+

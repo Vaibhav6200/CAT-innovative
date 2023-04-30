@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 130vh;
+    width: 100%;
+    background-color: rgba(88,167,218,255);
+    background-image: url("/img/looooo.gif");
+    background-repeat:no-repeat;
+    background-size:65%;
+    background-position: centre;
+}
+
+.text-box h1{
+    font-size: 150px;
+    line-height: 160px;
+    margin-left: 400px;
+    margin-top: -10px;
+    color: beige;
+    color: beige;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+    font-family:'kanit' ;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+
+}
+
+@keyframes example {
+    0% {
+            color: #5498bd;
+            margin-top: -200px;
+    }
+
+    10% {color: #003852;margin-top: -100px;}
+    20% {color: #026c9d;margin-top: -90px;}
+    30%  {color: #2e84ab;margin-top: -80px;}
+    40%  {color: #276988;margin-top: -70px;}
+    50% {color: #45768b;margin-top: -60px;}
+    60% {color: #507e93;margin-top: -50px;}
+    70% {color: #5b8fa7;margin-top: -40px;}
+    80% {color: rgb(135, 174, 192);margin-top: -30px;}
+    90% {color: #a8bcc6;margin-top: -20px;}
+    100% {color: #ffffff;margin-top: -10px;}
+
+}
+
+.text-box h2{
+    font-size: 150px;
+    line-height: 20px;
+    margin-left: 550px;
+    margin-top: -30px;
+    color: beige;
+    animation-name: example;
+    animation-timing-function: ease;
+    animation-duration: 4s;
+}
+
+
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+.topright img {
+    border-radius: 5%;
+}
+

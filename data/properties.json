@@ -1,0 +1,173 @@
+{
+    "aspirin":{
+        "linear_molecule":false,
+        "cn_axissymmetry":true,
+        "cn2_perp":false,
+        "reflection_plane":false,
+        "sn_symmetry":false,
+        "centre_symmetry":false,
+        "point_group":"C1"
+    },
+
+    "benzene": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": true,
+        "point_group": "D6h"
+    },
+    "cyclobutadiene": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": true,
+        "point_group": "D2h"
+    },
+    "caffeine": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": false,
+        "reflection_plane": false,
+        "sn_symmetry": false,
+        "centre_symmetry": true,
+        "point_group": "Ci"
+    },
+
+    "cubane": {
+        "linear_molecule": false,
+        "cn_axissymmetry": false,
+        "tetrahed_struc": false,
+        "octahed_struc": true,
+        "point_group": "Oh"
+    },
+
+    "cyclohexane": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": false,
+        "sig_d": true,
+        "point_group": "D3d"
+    },
+
+    "hexane": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": true,
+        "point_group": "D3h"
+    },
+
+    "mannitol": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": false,
+        "reflection_plane": false,
+        "sn_symmetry": false,
+        "centre_symmetry": true,
+        "point_group": "Ci"
+    },
+
+    "methane": {
+        "linear_molecule": false,
+        "cn_axissymmetry": false,
+        "tetrahed_struc": true,
+        "point_group": "Td"
+    },
+    "morphine": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": false,
+        "reflection_plane": false,
+        "sn_symmetry": false,
+        "centre_symmetry": false,
+        "point_group": "C1"
+    },
+
+    "napthalene": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": true,
+        "point_group": "D2h"
+    },
+
+    "oxylate": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": true,
+        "dihedral_plane": true,
+        "sig_h": true,
+        "point_group": "D2h"
+    },
+
+    "strychnine": {
+        "linear_molecule": false,
+        "cn_axissymmetry": true,
+        "cn2_perp": false,
+        "reflection_plane": false,
+        "sn_symmetry": false,
+        "centre_symmetry": true,
+        "point_group": "Ci"
+    },
+
+    "pyridine":{
+         "linear_molecule":false,
+         "cn_axissymmetry":true,
+         "cn2_perp":true,
+         "dihedral_plane":true,
+         "sig_h":false,
+         "sig_d":false,
+         "sig_v":true,
+         "point_group":"C2v"
+    },
+
+    "cyclopentadiene":{
+      "linear_molecule":false,
+         "cn_axissymmetry":true,
+         "cn2_perp":true,
+         "dihedral_plane":true,
+         "sig_h":false,
+         "sig_d":false,
+         "sig_v":true,
+         "point_group":"C2v"
+    },
+
+    "phenol":{
+        "linear_molecule":false,
+           "cn_axissymmetry":true,
+           "cn2_perp":true,
+           "dihedral_plane":true,
+           "sig_h":false,
+           "sig_d":false,
+           "sig_v":true,
+           "point_group":"C2v"
+      },
+
+
+      "pyrole":{
+        "linear_molecule":false,
+           "cn_axissymmetry":true,
+           "cn2_perp":true,
+           "dihedral_plane":true,
+           "sig_h":false,
+           "sig_d":false,
+           "sig_v":true,
+           "point_group":"C2v"
+      },
+      "thiophene":{
+        "linear_molecule":false,
+           "cn_axissymmetry":true,
+           "cn2_perp":true,
+           "dihedral_plane":true,
+           "sig_h":false,
+           "sig_d":false,
+           "sig_v":true,
+           "point_group":"C2v"
+      }
+}
