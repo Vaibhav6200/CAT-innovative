@@ -3,57 +3,7 @@
 <head>
 	<title>About Us</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            height: 100vh;
-            width: 150px;
-            background-color: #333;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px;
-        }
-
-        a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px;
-        }
-
-        main {
-            margin-left: 150px;
-            padding: 20px;
-        }
-
-        .container {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-        img {
-            width: 100px;
-            height: 100px;
-            float: left;
-            margin-right: 20px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
 	<nav>
@@ -73,7 +23,7 @@
 			<h2>Priya Patel</h2>
 			<p>20BCE235, Nirma University</p>
 		</div>
-        
+
 		<div class="container">
 			<img src="person2.jpg">
 			<h2>Dhruv Shah</h2>

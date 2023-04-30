@@ -1,13 +1,10 @@
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 130vh;
-    width: 100%;
+#backImage {
     background-color: rgba(88,167,218,255);
-    background-image: url("/img/looooo.gif");
     background-repeat:no-repeat;
-    background-size:65%;
-    background-position: centre;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-image: url("/img/looooo.gif");
 }
 
 .text-box h1{
@@ -43,17 +40,6 @@ body {
     90% {color: #a8bcc6;margin-top: -20px;}
     100% {color: #ffffff;margin-top: -10px;}
 
-}
-
-.text-box h2{
-    font-size: 150px;
-    line-height: 20px;
-    margin-left: 550px;
-    margin-top: -30px;
-    color: beige;
-    animation-name: example;
-    animation-timing-function: ease;
-    animation-duration: 4s;
 }
 
 

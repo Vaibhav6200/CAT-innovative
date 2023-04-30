@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <link rel="stylesheet" href="css/navbar2.css">
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/navbarSlider.css">
     <title>Document</title>
     <style>
 
@@ -24,13 +24,8 @@
 
     <div class="container">
 
-        <div class="topright"><img src="https://nirmawebsite.s3.ap-south-1.amazonaws.com/wp-content/uploads/2022/06/216X92.png"  width="120" height="60"></div>
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
 
-        <div class="flex-container">
-
+        <!-- <div class="flex-container">
             <div class="side-bar">
                 <div class="close-btn"><i class="fas fa-times"></i></div>
                 <div class="menu">
@@ -49,12 +44,8 @@
                 </div>
             </div>
             <div class="heading" style="color:white;"></div>
-        </div>
+        </div> -->
 
-        <div class="text-box" style="padding: 10px;">
-            <h1 class="heading">Group </h1>
-            <h2 class="heading">Theory</h2>
-        </div>
     </div>
 
 

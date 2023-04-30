@@ -399,18 +399,19 @@ function processData(data, value){
 
 
 
+function simulator1(){
+    let transformBallAndStick = new ChemDoodle.TransformCanvas3D("3dSketcher", 700, 600, true);
+    transformBallAndStick.styles.set3DRepresentation("Ball and Stick");
+    transformBallAndStick.styles.atoms_displayLabels_3D = true;
+    transformBallAndStick.styles.backgroundColor = 'transparent';
 
+    let path = "ChemDoodleWeb-9.5.0/data/molecules/caffeine.mol";
+    ChemDoodle.io.file.content(path, function(content){
+        let mol = ChemDoodle.readMOL(content, 2);
+        transformBallAndStick.loadMolecule(mol);
+    })
+}
 
-let transformBallAndStick = new ChemDoodle.TransformCanvas3D("3dSketcher", 700, 600, true);
-transformBallAndStick.styles.set3DRepresentation("Ball and Stick");
-transformBallAndStick.styles.atoms_displayLabels_3D = true;
-transformBallAndStick.styles.backgroundColor = 'transparent';
-
-let path = "ChemDoodleWeb-9.5.0/data/molecules/caffeine.mol";
-ChemDoodle.io.file.content(path, function(content){
-    let mol = ChemDoodle.readMOL(content, 2);
-    transformBallAndStick.loadMolecule(mol);
-})
 
 
 function drawMolecule(obj){
