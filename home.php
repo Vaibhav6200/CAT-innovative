@@ -31,9 +31,14 @@
     <link rel="stylesheet" href="css/mentors.css">
     <link rel="stylesheet" href="css/references.css">
 
+    <style>
+        body{
+            background-color: #5498bd;
+        }
+    </style>
 
 </head>
-<body>
+<body onload="homeDisplay()">
 
     <!-- Nirma Logo -->
     <div class="topright"><img src="https://nirmawebsite.s3.ap-south-1.amazonaws.com/wp-content/uploads/2022/06/216X92.png"  width="120" height="60"></div>
@@ -50,8 +55,8 @@
                 <div class="item">
                     <a class="sub-btn"><i class="fas fa-desktop"></i>Simulator<i class="fas fa-angle-right dropdown"></i></a>
                     <div class="sub-menu">
-                        <a href="#" class="sub-item" onclick="simulatior1Display();">Analyse Molecule</a>
-                        <a href="#" class="sub-item" onclick="simulatior2Display();">Sketcher model</a>
+                        <a href="#" class="sub-item" onclick="simulator1Display();">Analyse Molecule</a>
+                        <a href="#" class="sub-item" onclick="simulator2Display();">Sketcher model</a>
                     </div>
                 </div>
                 <div class="item"> <a onclick="aboutDisplay();"><i class="fa-solid fa-user"></i>About Us</a></div>
@@ -477,50 +482,21 @@
         </div>
     </div>
 
+
     <!-- ADMIN: Add Question (QUIZ) -->
-    <?php
-        if($_SESSION['admin']){
-        echo '<div class="add_ques"><form method="post" action="add_ques.php">
-                    <label for="question">Question:</label><br>
-                    <input type="text" id="question" name="question" required><br>
+    <!-- <section id="add_question"></section> -->
 
-                    <label for="option1">Option 1:</label><br>
-                    <input type="text" id="option1" name="option1" required><br>
 
-                    <label for="option2">Option 2:</label><br>
-                    <input type="text" id="option2" name="option2" required><br>
-
-                    <label for="option3">Option 3:</label><br>
-                    <input type="text" id="option3" name="option3" required><br>
-
-                    <label for="option4">Option 4:</label><br>
-                    <input type="text" id="option4" name="option4" required><br>
-
-                    <label for="answer">Correct Answer:</label><br>
-                    <select id="answer" name="answer" required>
-                        <option value="">--Select Answer--</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                    </select><br>
-
-                    <input type="submit" value="Submit">
-                    </form></div>';
-        }
-    ?>
-
-    <!-- SIMULATION SECTION -->
-    <section id="simulator">
-        <!-- SIMULATOR 1 -->
-        <div class="simulator1 d-none">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-8">
-                        <canvas id="3dMolecule"></canvas>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-dark btn-block mb-3" onclick="location.reload();">Refresh</button>
+    <!-- SIMULATOR 1 -->
+    <div class="simulator1 d-none">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <canvas id="3dMolecule" style="border: none;"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <button class="btn btn-dark btn-block mb-3" onclick="refresh();">Refresh</button>
                         <select class="form-control" name="molecules" id="molecules" onchange="drawMolecule(this);">
                             <option disabled selected>Select a molecule</option>
                             <option value="benzene">Benzene</option>
@@ -541,8 +517,8 @@
                             <option value="hexane">Hexane</option>
                             <option value="methane">Methane</option>
                             <option value="thiophene">Thiophene</option>
-
                         </select>
+
                         <select class="form-control mt-3" name="model" id="model" onchange="setModel(this);">
                             <option value="Ball and Stick">Ball and Stick</option>
                             <option value="van der Waals Spheres">Van Der Waals Spheres</option>
@@ -553,9 +529,8 @@
 
                         <div class="mt-5 d-flex flex-column justify-content-center align-items-center" id="parent">
                             <label for="question" class="text-white font-weight-bold fa-2x" id="question"></label>
-                            <div class="d-none" id="selectButton">
 
-                            </div>
+                            <div class="d-none" id="selectButton"></div>
 
                             <select class="form-control mt-3 d-none" name="pointGroup" id="pointGroupList">
                                 <option disabled selected>Select a Point Group</option>
@@ -589,22 +564,24 @@
                             </select>
                             <span class="mt-3 text-white font-weight-bold fa-2x" id="message"></span>
                         </div>
+
+
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
-        <!-- SIMULATOR 2 -->
-        <div class="simulator2 d-none">
-            <div class="container mt-5 d-flex justify-content-center align-items-center">
-                <div class="d-flex justify-content-center align-items-center flex-column">
-                    <canvas class="" id="sketcher"></canvas>
-                </div>
-                <canvas class="" id="3dSketcher"></canvas>
+    <!-- SIMULATOR 2 -->
+    <div class="simulator2 d-none">
+        <div class="container mt-5 d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <canvas class="" id="sketcher"></canvas>
             </div>
+            <canvas class="" id="3dSketcher" style="border: none;"></canvas>
         </div>
-    </section>
+
+    </div>
 
     <!-- About-Us Section -->
     <section class="about d-none">
@@ -670,12 +647,12 @@
     </section>
 
 
+    <!-- Custom JS -->
     <script src="js/display.js"></script>
     <script src="js/navbarSlider.js"></script>
     <script src="js/simulator.js"></script>
-    <script src="js/simulationProcedure.js"></script>
 
-
+    <!-- Bootstrap JS -->
     <script src='http://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T' crossorigin='anonymous'></script>
