@@ -24,7 +24,7 @@ function send_mail($email,$username,$code){
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Email verification';
-    $mail->Body    = "Thanks for the registration. Verify your email address by clicking on this link <a href='http://localhost/cat/verify.php?email=$email&code=$code'>Verify</a>";
+    $mail->Body    = "Thanks for the registration. Verify your email address by clicking on this link <a href='http://localhost:3000/verify.php?email=$email&code=$code'>Verify</a>";
 
     $mail->send();return true;
 } catch (Exception $e) {
@@ -127,7 +127,7 @@ function send_mail($email,$username,$code){
                       $_SESSION['logged_in']='yes';
                       $_SESSION['admin']=false;
                       $_SESSION['index']=0;
-                      header("Location:navbar2.php");}
+                      header("Location:home.php");}
                   } else {
                     $cnt=6;
                   }
@@ -144,7 +144,7 @@ function send_mail($email,$username,$code){
                   $_SESSION['logged_in']='yes';
                   $_SESSION['admin']=false;
                   $_SESSION['index']=0;
-                  header("Location:navbar2.php");}
+                  header("Location:home.php");}
               } else {
                 $cnt=6;
               }
