@@ -8,7 +8,7 @@ function send_mail($email,$username,$code){
   require('phpmailer/SMTP.php');
   require('phpmailer/Exception.php');
   $mail = new PHPMailer(true);
-  try {                     
+  try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -20,11 +20,11 @@ function send_mail($email,$username,$code){
     //Recipients
     $mail->setFrom('jinayshah0303@gmail.com', 'Nirma Vlab');
     $mail->addAddress($email, $username);     //Add a recipient
-    
+
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Email verification';
-    $mail->Body    = "Thanks for the registration. Verify your email address by clicking on this link <a href='http://localhost/cat_inn/verify.php?email=$email&code=$code'>Verify</a>";
+    $mail->Body    = "Thanks for the registration. Verify your email address by clicking on this link <a href='http://localhost/cat/verify.php?email=$email&code=$code'>Verify</a>";
 
     $mail->send();return true;
 } catch (Exception $e) {
@@ -42,7 +42,7 @@ function send_mail($email,$username,$code){
   // Check if the form was submitted
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Determine which form was submitted
-    
+
     if (isset($_POST['signup'])) {
       // Set the form fields to the submitted values
       $username1 = $_POST['username1'];
@@ -57,7 +57,7 @@ function send_mail($email,$username,$code){
         }
         else{
 
-          if (preg_match('/^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/', 
+          if (preg_match('/^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/',
           $password1)) {
             if(filter_var($email,FILTER_VALIDATE_EMAIL)){
               $sql="SELECT * FROM `users` WHERE `email` = '$email'";
@@ -72,7 +72,7 @@ function send_mail($email,$username,$code){
                       exit();
                     }
                     else{
-                      
+
                       $cnt=2;
                       //'Sorry for inconvenience. Fault on our side.'
                     }
@@ -81,7 +81,7 @@ function send_mail($email,$username,$code){
                       $cnt=7;
                         //email already registered
                   }
-                
+
             }
             else{
               $cnt=8;
@@ -97,14 +97,14 @@ function send_mail($email,$username,$code){
     else{
       $cnt=3;
         //'Confirm password does not match with original password.'
-        
+
     }
     } elseif (isset($_POST['login'])) {
       // Set the form fields to the submitted values
       $username2 = $_POST['username2'];
       $password2 = $_POST['password2'];
-     
-        
+
+
         $sql="SELECT * FROM `users` WHERE `username` = '$username2'";
         $result=mysqli_query($conn,$sql);
         $sql="SELECT * FROM `users` WHERE `email`='$username2'";
@@ -113,12 +113,12 @@ function send_mail($email,$username,$code){
 
             //username or email doesnt exist
             $cnt=5;
-          
+
         }
         else{
             if(mysqli_num_rows($result)){
               while ($row = mysqli_fetch_assoc($result)) {
-                
+
                   if ($password2==$row['password']) {
                       if($row['status']=='0'){
                           $cnt=10;
@@ -135,7 +135,7 @@ function send_mail($email,$username,$code){
             }
             else{
               while ($row = mysqli_fetch_assoc($result1)) {
-                
+
                 if ($password2==$row['password']) {
                   if($row['status']=='0'){
                       $cnt=10;
@@ -150,25 +150,25 @@ function send_mail($email,$username,$code){
               }
             }
             }
-           
+
         }
     }
   }
-  
-  
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Signup Page</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <style>
     body {
-      background-color: #f5f5f5;
+      background-color: #5498bd;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -187,11 +187,11 @@ function send_mail($email,$username,$code){
       padding-top:25px;
     }
 
-    
+
     .signupform{
       width: 40%; /* set the width of the container */
 
-      margin: 0 auto; 
+      margin: 0 auto;
       padding: 40px;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,.1);
@@ -203,9 +203,9 @@ function send_mail($email,$username,$code){
 
     .loginform{
       display:none;
-      width: 40%; 
-      
-      margin: 0 auto; 
+      width: 40%;
+
+      margin: 0 auto;
       padding: 40px;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,.1);
@@ -213,7 +213,7 @@ function send_mail($email,$username,$code){
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
       font-size:10px;
-    } 
+    }
     .form-container{
       margin:0 auto;
       text-align:left;
@@ -228,7 +228,7 @@ function send_mail($email,$username,$code){
 
     form input[type="text"],
     form input[type="email"],
-    form input[type="password"] 
+    form input[type="password"]
     {
       width: 100%;
       padding: 10px;
@@ -355,7 +355,7 @@ function send_mail($email,$username,$code){
       padding-left: 167px;
       font-size: 20px;
     }
-    
+
     .form-group{
       text-align:left;
     }
@@ -371,7 +371,7 @@ function send_mail($email,$username,$code){
 <body>
 
 
-<?php 
+<?php
 if($cnt==1){
   echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Error!</strong> Username already exists.
@@ -439,12 +439,12 @@ $cnt=0;
         <label for="username1">Username:</label>
         <input type="text" id="username1" name="username1" required>
         </div>
-        
+
         <div class="form-group">
         <label for="email1">Email:</label>
         <input type="email" id="email1" name="email1" required>
         </div>
-        
+
 
         <div class="form-group">
         <label for="password1">Password(should contain 8-20 letters, one special character, one numeric letter):</label>
@@ -455,14 +455,11 @@ $cnt=0;
         <label for="cpassword1">Confirm Password:</label>
         <input type="password" id="cpassword1" name="cpassword1" required>
         </div>
-        <div class="form-group">
-        <label for="image">Upload an image:</label>
-        <input type="file" id="image" name="image" accept="image/*">
-        </div>
+
         <div class="ss">
         <button type="submit" class="SignUpp" name="signup">Sign up</button></div>
 
-      
+
       </form>
 
       <form id="form-2" class="loginform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" autocomplete="off">
@@ -471,15 +468,15 @@ $cnt=0;
           <label for="username2">Username or Email:</label>
           <input type="text" id="username2" name="username2" required>
         </div>
-        
+
         <div class="form-group">
           <label for="password2">Password:</label>
           <input type="password" id="password2" name="password2" required>
         </div>
-        
-        
+
+
         <button type="submit" name="login">Login</button>
-      
+
       </form>
 
       <div class="buttons">
@@ -487,12 +484,12 @@ $cnt=0;
            <button id="button-2" onClick="startlogin()">Login on existing account</button>
       </div>
 
-      
+
     </div>
   </div>
-  
+
 <script>
-  
+
   function startsignup(){
 		var form = document.querySelector('.signupform');
 		form.style.display = 'block';
@@ -507,9 +504,9 @@ $cnt=0;
         var form = document.querySelector('.loginform');
 		form.style.display = 'block';
         document.getElementById("hidden-iframe").display = "block";
-       
+
   }
-  
+
 </script>
 
 </body>

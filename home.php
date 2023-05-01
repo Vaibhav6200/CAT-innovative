@@ -462,7 +462,80 @@
     </div>
 
     <!-- QUIZ SECTION -->
-    <div class="quiz d-none">  </div>
+    <div class="quiz d-none">
+        <h1 style="text-align:center; margin:10px;">Test Yourself</h1>
+
+        <div class="container" style="background-color:white;padding:12px;">
+        <?php
+            // Check the quiz answers and show the results
+            $quiz=array();
+            if($_SERVER["REQUEST_METHOD"]=="GET"){
+              $sql="SELECT * FROM `quiz`;";
+              $result=mysqli_query($conn,$sql);
+              $ques=array();
+              $left=5;
+              while($row=mysqli_fetch_assoc($result)){
+                  $ques[]=array($row['ques'],$row['op1'],$row['op2'],$row['op3'],$row['op4'],$row['cr_op']);
+              }
+              shuffle($ques);
+              for($i=0;$i<count($ques);$i++){
+                  if(count($ques)-$i>$left){
+                      $random_number = rand(0, 1);
+                      if($random_number%2){
+                          $left--;
+                          $quiz[]=$ques[$i];
+                      }
+                  }
+                  else{
+                      $left--;
+                      $quiz[]=$ques[$i];
+                  }
+              }
+              $_SESSION['quiz']=$quiz;
+            }
+            else{
+              $quiz=$_SESSION['quiz'];
+            }
+
+            if (isset($_POST['submit'])) {
+
+                $correct = 0;
+                for ($i=0; $i<5; $i++) {
+                    if (isset($_POST['q'.$i]) && $_POST['q'.$i] == $quiz[$i][5]) {
+                    $correct++;
+                    }
+                }
+                echo "<h4>You got ".$correct." out of 5 questions correct!</h4>";
+                for ($i=0; $i<5; $i++) {
+                    if (isset($_POST['q'.$i]) && $_POST['q'.$i] == $quiz[$i][5]) {
+                    echo "<p>Question ".($i+1).": ".$quiz[$i][0]." <span style='color:green'>Correct</span></p>";
+                    } else {
+                    echo "<p>Question ".($i+1).": ".$quiz[$i][0]." <span style='color:red'>Incorrect</span> Correct answer is :".$quiz[$i][$quiz[$i][5]]."</p>";
+                    }
+                }
+            }
+            // Define the quiz questions and answers as an array of arrays
+
+            // Generate the quiz form
+
+            echo "<form method='post'>";
+            for ($i=0; $i<5; $i++) {
+            echo "<h3>".$quiz[$i][0]."</h3>";
+            for ($j=1; $j<5; $j++) {
+                echo "<label><input type='radio' name='q".$i."' value='".$j."'>".$quiz[$i][$j]."</label><br>";
+            }
+            }
+
+            echo "<input type='submit' name='submit' class='btn btn-primary' value='Submit' style='margin-bottom:4px;'>";
+            echo "</form>";
+
+        ?>
+            <form id="quizForm" post="get" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+                <button type="submit" id="quiz-button" class="btn btn-primary">Retake test</button>
+            </form>
+
+        </div>
+    </div>
 
     <!-- REFERENCE SECTION -->
     <div class="reference d-none">
@@ -481,10 +554,6 @@
             </p>
         </div>
     </div>
-
-
-    <!-- ADMIN: Add Question (QUIZ) -->
-    <!-- <section id="add_question"></section> -->
 
 
     <!-- SIMULATOR 1 -->
@@ -587,41 +656,44 @@
     <section class="about d-none">
         <main>
             <h1>About Us</h1>
+            <div class="d-flex justify-content-center align-items center">
+                <div class="container bg-white">
+                    <img src="img/vaibhav.png">
+                    <h2>Vaibhav Paliwal</h2>
+                    <p>20BCE308, Nirma University</p>
+                </div>
 
-            <div class="container">
-                <img src="img/vaibhav.png">
-                <h2>Vaibhav Paliwal</h2>
-                <p>20BCE308, Nirma University</p>
+                <div class="container bg-white">
+                    <img src="img/jinay.jpg">
+                    <h2>Jinay Shah</h2>
+                    <p>20BCE263, Nirma University</p>
+                </div>
+
+                <div class="container bg-white">
+                    <img src="img/priya.jpg">
+                    <h2>Priya Patel</h2>
+                    <p>20BCE235, Nirma University</p>
+                </div>
             </div>
 
-            <div class="container">
-                <img src="img/jinay">
-                <h2>Jinay Shah</h2>
-                <p>20BCE263, Nirma University</p>
-            </div>
+            <div class="d-flex justify-content-center align-items center">
+                <div class="container bg-white">
+                    <img src="img/vini.jpg">
+                    <h2>Vini Hundlani</h2>
+                    <p>20BCE317, Nirma University</p>
+                </div>
 
-            <div class="container">
-                <img src="img/priya">
-                <h2>Priya Patel</h2>
-                <p>20BCE235, Nirma University</p>
-            </div>
+                <div class="container bg-white">
+                    <img src="img/dhruv.jpg">
+                    <h2>Dhruv Shah</h2>
+                    <p>20BCE260, Nirma University</p>
+                </div>
 
-            <div class="container">
-                <img src="img/vini">
-                <h2>Vini Hundlani</h2>
-                <p>20BCE317, Nirma University</p>
-            </div>
-
-            <div class="container">
-                <img src="img/dhruv">
-                <h2>Dhruv Shah</h2>
-                <p>20BCE260, Nirma University</p>
-            </div>
-
-            <div class="container">
-                <img src="img/aneri">
-                <h2>Aneri Thakkar</h2>
-                <p>20BCE293, Nirma University</p>
+                <div class="container bg-white">
+                    <img src="img/aneri.jpg">
+                    <h2>Aneri Thakkar</h2>
+                    <p>20BCE293, Nirma University</p>
+                </div>
             </div>
 
         </main>
@@ -632,13 +704,13 @@
         <main>
             <h1>Mentors</h1>
 
-            <div class="mentor-container">
+            <div class="mentor-container bg-white">
                 <img src="img/uploads/Amita Choudhary.jpeg">
                 <h2>Amita Choudhary</h2>
                 <p class="mentor-description">Assistant Professor in Chemical Engineering, Nirma University</p>
             </div>
 
-            <div class="mentor-container">
+            <div class="mentor-container bg-white">
                 <img src="img/uploads/Neha Patni.jpeg">
                 <h2>Neha Patni</h2>
                 <p class="mentor-description">Assistant Professor in Chemical Engineering, Nirma University</p>
